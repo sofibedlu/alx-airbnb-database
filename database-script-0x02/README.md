@@ -6,7 +6,7 @@ Populate the database with realistic sample data for testing and development pur
 ---
 
 ## Sample Data Overview
-The `seed_data.sql` file contains SQL `INSERT` statements to populate the following tables:
+The `seed.sql` file contains SQL `INSERT` statements to populate the following tables:
 
 1. **User**:
    - Includes guests, hosts, and admins.
