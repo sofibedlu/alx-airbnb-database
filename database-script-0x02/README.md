@@ -44,11 +44,11 @@ The `seed_data.sql` file contains SQL `INSERT` statements to populate the follow
 2. Execute the file against your database:
    - **MySQL**:
      ```bash
-     mysql -u <username> -p <database_name> < seed_data.sql
+     mysql -u <username> -p <database_name> < seed.sql
      ```
    - **PostgreSQL**:
      ```bash
-     psql -U <username> -d <database_name> -f seed_data.sql
+     psql -U <username> -d <database_name> -f seed.sql
      ```
 
 ### Sample Data Highlights
