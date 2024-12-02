@@ -3,11 +3,10 @@
 ## Objective
 Refactor a complex query to improve performance while retrieving bookings with user, property, and payment details.
 
----
-
 ## Initial Query
-The initial query joins multiple tables (`Booking`, `User`, `Property`, and `Payment`) and retrieves all columns without filtering.  
+- The initial query joins multiple tables (`Booking`, `User`, `Property`, and `Payment`) and retrieves all columns without filtering.  
 This query processes a large volume of data, leading to inefficiencies.
+
     ```sql
     SELECT 
         Booking.booking_id,
@@ -36,7 +35,7 @@ This query processes a large volume of data, leading to inefficiencies.
     LEFT JOIN 
         Payment ON Booking.booking_id = Payment.booking_id;
 
-## Performance Analysis (EXPLAIN)
+**Performance Analysis (EXPLAIN)**
 - Type: Full table scan (ALL) in some joins.
 - Rows: High number of rows processed due to no filtering.
 - Keys: Limited index usage.
@@ -44,7 +43,8 @@ This query processes a large volume of data, leading to inefficiencies.
 ---
 
 ## Refactored Query
-The optimized query limits retrieved columns, applies table aliases for clarity, and adds a WHERE clause to filter by start_date.
+- The optimized query limits retrieved columns, applies table aliases for clarity, and adds a WHERE clause to filter by start_date.
+
     ```sql
     SELECT 
         b.booking_id,
@@ -69,7 +69,8 @@ The optimized query limits retrieved columns, applies table aliases for clarity,
         Payment AS pm ON b.booking_id = pm.booking_id
     WHERE 
         b.start_date >= '2024-01-01';
-## Improvements
+
+**Improvements**
 - Reduced Columns: Only necessary columns selected.
 - Added Filter: Limits data with a WHERE clause.
 - Key Usage: Optimized joins leverage indexes on user_id, property_id, and - booking_id.
