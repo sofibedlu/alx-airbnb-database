@@ -1,5 +1,4 @@
---- Here's a query that retrieves all bookings along with user, property, and payment details:
-
+-- Retrieve all bookings along with user, property, and payment details
 SELECT 
     Booking.booking_id,
     Booking.start_date,
@@ -27,8 +26,7 @@ JOIN
 LEFT JOIN 
     Payment ON Booking.booking_id = Payment.booking_id;
 
-
---- Analyze Query Performance
+-- Analyze Query Performance
 EXPLAIN SELECT 
     Booking.booking_id,
     Booking.start_date,
@@ -56,9 +54,7 @@ JOIN
 LEFT JOIN 
     Payment ON Booking.booking_id = Payment.booking_id;
 
-
---- Refactor the Query
-
+-- Refactor the Query
 SELECT 
     b.booking_id,
     b.start_date,
@@ -81,4 +77,5 @@ JOIN
 LEFT JOIN 
     Payment AS pm ON b.booking_id = pm.booking_id
 WHERE 
-    b.start_date >= '2024-01-01'; -- Example filter for optimization
+    b.start_date >= '2024-01-01'
+    AND b.status = 'confirmed'; -- Example filter for optimization
