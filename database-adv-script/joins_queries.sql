@@ -15,6 +15,7 @@ SELECT
     Property.property_id,
     Property.name AS property_name,
     Property.location,
+    Property.pricepernight
     Review.review_id,
     Review.rating,
     Review.comment
@@ -24,6 +25,8 @@ LEFT JOIN
     Review
 ON 
     Property.property_id = Review.property_id;
+ORDER BY 
+    Property.pricepernight, Review.created_at;
 
 SELECT 
     User.user_id,
